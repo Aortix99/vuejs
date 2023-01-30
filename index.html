@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://unpkg.com/vue@next"></script>
+    <div id="app"></div>
+    
+    <script>
+        //podemos acceder como un objeto a esto como vm.text
+       const mv= Vue.createApp({
+            data(){
+                return{
+                text:"Hola vue"
+                //    img: "img/ingrediente.jpg"
+             
+                };
+            },
+            methods: {
+                input(e){
+                    this.text = e.target.value;
+                }
+
+
+            },
+       //     template: '<h1 v-once v-text="text"></h1>'
+//v-html="text" // esto genera vulneravilidades
+          //  template: '<img v-bind:src="img" v-bind:alt="img">'
+//keyup te aplica con cualquiewr tecla
+        //  template: '<form v-on:submit.prevent.stop="increment"><button >{{ counter }}</button></form>',
+       template: `<p> {{text}} </p>
+                 <input maxlength="2" type="text" v-on:input="input" :value="text"/>
+
+
+`,
+        }).mount("#app") ;
+        ;
+    </script>
+    
+</body>
+</html>
